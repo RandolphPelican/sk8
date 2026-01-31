@@ -26,7 +26,7 @@ class Match(Base):
     
     # Players
     player1_id = Column(String, ForeignKey("users.id"), nullable=False, index=True)
-    player2_id = Column(String, ForeignKey("users.id"), nullable=False, index=True)
+    player2_id = Column(String, ForeignKey("users.id"), nullable=True, index=True)  # Nullable for pending challenges
     
     # Match Config
     mode = Column(Enum(MatchModeEnum), nullable=False, default=MatchModeEnum.NORMAL)
@@ -50,7 +50,7 @@ class Match(Base):
     completed_at = Column(DateTime(timezone=True))
     last_activity = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
     
-    # Extra data (renamed from 'metadata' to avoid SQLAlchemy conflict)
+    # Extra data
     extra_data = Column(JSON)
     
     # Relationships

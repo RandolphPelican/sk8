@@ -39,3 +39,4 @@ httpx==0.26.0
 # Development
 black==23.12.1
 ruff==0.1.11
+gunicorn==21.2.0
